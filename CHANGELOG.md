@@ -1,3 +1,81 @@
+### v3.5.4 (⁇-⁇-⁇):
+
+Machine generated changelog, edit me
+
+* [`5997cb4`](https://github.com/npm/npm/commit/5997cb4d22c27c8161a7baa3e9e20e25b32b8df3)
+  [#10787](https://github.com/npm/npm/pull/10787)
+  npm-dist-tag: s/"/`/g
+  For uniformity with the docs for the "publish" command, use code formatting for tag names in the docs for the "dist-tag" command.
+  ([@cvrebert](https://github.com/cvrebert))
+* [`337c18e`](https://github.com/npm/npm/commit/337c18ec4524c2f3bdc6487b299156f3d5f39d9a)
+  [#10787](https://github.com/npm/npm/pull/10787)
+  npm-dist-tag: Explain why the `latest` tag matters
+  * Explain why one would care about the `latest` tag, by explaining its special significance to `npm install`. Currently, only its default status with respect to `npm publish` is mentioned.
+  * Also, avoid using npm as a meta-example, as this causes confusion between npm-the-tool and npm-the-project. The old docs made it sound like the `next` tag might've has special significance to npm-the-tool, when it was instead talking about npm-the-project (AFAIK).
+  * Mention common practice regarding tagging unstable releases, as this is not universally known.
+  * Include the term "prerelease" for SEO's sake
+  ([@cvrebert](https://github.com/cvrebert))
+* [`eb647ba`](https://github.com/npm/npm/commit/eb647ba895996bd1c838de610df53788e99c1c43)
+  [#10788](https://github.com/npm/npm/pull/10788)
+  Link to tag docs in docs for `npm publish --tag`
+  ([@cvrebert](https://github.com/cvrebert))
+* [`efd961b`](https://github.com/npm/npm/commit/efd961b73d73320304c96eeb66e5765c5e92504c)
+  [#10789](https://github.com/npm/npm/pull/10789)
+  Gloss 1st prose mention of "tag" in `npm install` docs
+  ([@cvrebert](https://github.com/cvrebert))
+* [`74058c4`](https://github.com/npm/npm/commit/74058c4bc1a3447c151f2111fc479130b96081d3)
+  [#10790](https://github.com/npm/npm/pull/10790)
+  Clarify that `npm install foo` ≡ `npm install foo@latest` by default
+  ([@cvrebert](https://github.com/cvrebert))
+* [`bd11b25`](https://github.com/npm/npm/commit/bd11b2582437becc7376e1ef35f405512596b970)
+  [#10798](https://github.com/npm/npm/pull/10798)
+  always install in npm in legacy mode
+  Also, clean out the docs and prune the tree before making a release
+  tarball, to keep as much cruft as possible out of the release tarball.
+  ([@othiym23](https://github.com/othiym23))
+* [`e73b564`](https://github.com/npm/npm/commit/e73b56407d95a723d0ebf5434a67d9bc6bce70e9)
+  Don't include the progress bar in test output
+  ([@iarna](https://github.com/iarna))
+* [`4f60b98`](https://github.com/npm/npm/commit/4f60b9827278eb57ab7edc246a9997a756412f3d)
+  sorted-package-json: don't stomp on error output
+  ([@iarna](https://github.com/iarna))
+* [`ffc4e65`](https://github.com/npm/npm/commit/ffc4e65539a14696699e1bdaf49c3e68914827e0)
+  mock just one fs function in no-scan-full-global-dir
+  ([@iarna](https://github.com/iarna))
+* [`59ed01a`](https://github.com/npm/npm/commit/59ed01a8ea7960b1467aed52164fc36a03c77770)
+  work around node 0.8 http back-pressure bug
+  0.8 http streams have a bug, where if they're paused with data in
+  their buffers when the socket closes, they call `end` before emptying
+  those buffers, which results in the entire pipeline ending and thus
+  the point that applied backpressure never being able to trigger a
+  `resume`.
+  We work around this by piping into a pass through stream that has
+  unlimited buffering. The pass through stream is from readable-stream
+  and is thus a current streams3 implementation that is free of these
+  bugs even on 0.8.
+  ([@iarna](https://github.com/iarna))
+* [`d2b7b1e`](https://github.com/npm/npm/commit/d2b7b1e2bad91086476fb3a774d1a269b869d439)
+  Make fs-write-stream-atomic consistently referred to as writeStreamAtomic
+  ([@iarna](https://github.com/iarna))
+* [`8325427`](https://github.com/npm/npm/commit/832542724a30d4d7f5046e69b0bf54eeaa18c705)
+  Make `readable-stream@2.0.2` a regular dependency
+  Previously it was only used in tests, but we needed a modern pass through
+  stream to provide buffering for 0.8 http streams, which have a bug around
+  backpressure.
+  ([@iarna](https://github.com/iarna))
+* [`5816874`](https://github.com/npm/npm/commit/5816874399feba1c07f09ebf19f3d731ddd77e2c)
+  Rewrite noargs-install-config-save to use common.npm
+  ([@iarna](https://github.com/iarna))
+* [`857c59e`](https://github.com/npm/npm/commit/857c59e874b8ddfa91b1675a36643ab8a20c6912)
+  install-link-scripts, no chmod on write in 0.8
+  ([@iarna](https://github.com/iarna))
+* [`c0e5d41`](https://github.com/npm/npm/commit/c0e5d4151fdbbb6d5cdce62633f7569db43773eb)
+  remove nock dependency
+  ([@iarna](https://github.com/iarna))
+* [`b14cdbb`](https://github.com/npm/npm/commit/b14cdbb6002b04bfbefaff70cc45810c20d5a366)
+  Rewrite tests using nock to use other alternatives
+  ([@zkat](https://github.com/zkat))
+
 ### v3.5.3 (2015-12-10):
 
 Did you know that Bob Ross reached the rank of master sergeant in the US Air
